@@ -1,0 +1,79 @@
+x<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Toggling Rabbit Info</title>
+    <link rel="stylesheet" href="rabbit.css">
+    <style>
+        /* Your CSS styles here (can also be in rabbit.css) */
+        #rabbit-reveal {
+            display: none; /* Initially hide the image */
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin-top: 20px;
+        }
+        #click-trigger {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+        #rabbit-info {
+            display: none; /* Initially hide the rabbit info */
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: left;
+        }
+        #learn-more-trigger {
+            cursor: pointer;
+            color: green;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="rabbit-container">
+        <h1>The Toggling Rabbit</h1>
+        <p id="click-trigger">Click Here to See the Rabbit!</p>
+        <img src="image 2.jpg" id="cartoon-rabbit.png" alt="Cute Cartoon Rabbit">
+
+        <p id="learn-more-trigger">Learn More About Rabbits</p>
+        <div id="rabbit-info">
+            <p>Loading basic information about rabbits...</p>
+        
+        </div>
+
+        <audio src="rabbit-sound" id="[your-sound-file.mp3]"></audio>
+    </div>
+    <p class="logout-link"><a href="#">Logout</a></p>
+
+    <script>
+        // This is where your JavaScript code goes
+
+        const clickTrigger = document.getElementById('click-trigger');
+        const rabbitImage = document.getElementById('rabbit-reveal');
+        const learnMoreTrigger = document.getElementById('learn-more-trigger');
+        const rabbitInfoDiv = document.getElementById('rabbit-info');
+        const rabbitInfoContent = `<p>European rabbits (Oryctolagus cuniculus) are social animals...</p>
+                                   <p>They are herbivores, primarily eating grasses and other leafy plants...</p>
+                                   <p>Rabbits are known for their rapid breeding...</p>
+                                   <p>For more detailed information, you can visit <a href="https://lafeber.com/vet/basic-information-for-european-rabbits/" target="_blank" rel="noopener noreferrer">Lafeber Vet</a>.</p>`;
+
+        clickTrigger.addEventListener('click', function() {
+            rabbitImage.style.display = rabbitImage.style.display === 'none' ? 'block' : 'none';
+            rabbitInfoDiv.style.display = 'none'; // Hide the info when showing the image
+        });
+
+        learnMoreTrigger.addEventListener('click', function() {
+            rabbitInfoDiv.style.display = rabbitInfoDiv.style.display === 'none' ? 'block' : 'none';
+            rabbitInfoDiv.innerHTML = rabbitInfoContent; // Load the content when shown
+            rabbitImage.style.display = 'none'; // Hide the image when showing the info
+        });
+    </script>
+
+</body>
+</html>
